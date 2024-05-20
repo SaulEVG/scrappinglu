@@ -8,13 +8,13 @@ import { headers } from "next/headers";
 export default async function ProductList(searchParams: {
   searchParams: string;
 }) {
-  const headerList = headers();
-  const host = headerList.get("x-forwarded-host");
-  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
-  const hosting = `${protocol}://${host}/`;
+  // const headerList = headers();
+  // const host = headerList.get("x-forwarded-host");
+  // const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
+  // const hosting = `${protocol}://${host}/`;
 
   await connectDB();
-  const productList = await getProductList(searchParams.searchParams);
+  const productList = await getProductList("");
 
   const productListWithShortUrl = await Promise.all(
     productList.map(async (product) => {
@@ -53,7 +53,7 @@ export default async function ProductList(searchParams: {
                     </h3>
                     <CopyButton
                       key={crypto.randomUUID()}
-                      hosting={hosting}
+                      // hosting={hosting}
                       productData={product}
                     />
                   </div>

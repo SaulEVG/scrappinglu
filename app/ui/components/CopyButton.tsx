@@ -14,10 +14,10 @@ interface fetchListProduct {
 
 export default function CopyButton({
   productData,
-  hosting,
-}: {
+}: // hosting,
+{
   productData: fetchListProduct;
-  hosting: string;
+  // hosting: string;
 }) {
   const [click, setClick] = useState(false);
 
