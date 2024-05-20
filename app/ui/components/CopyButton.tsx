@@ -22,7 +22,7 @@ export default function CopyButton({
   const [click, setClick] = useState(false);
 
   const handlerCopy = () => {
-    const productDataString = `*🛒${productData.productTitle}*\n\n*${productData.productPrice}* no *Magalu*🛍️ \n\n${hosting}${productData.short} \n\n🔐 Site Confiável: *Magalu* \n\n📱 *Link para entrar no grupo* \n https://chat.whatsapp.com/JzQMBb0lDa2JDdCkHlnNPK \n\n⬆ *Já viu as últimas ofertas?* ⬆`;
+    const productDataString = `*🛒${productData.productTitle}*\n\n*${productData.productPrice}* no *Magalu*🛍️ \n\n${productData.productLink} \n\n🔐 Site Confiável: *Magalu* \n\n📱 *Link para entrar no grupo* \n https://chat.whatsapp.com/JzQMBb0lDa2JDdCkHlnNPK \n\n⬆ *Já viu as últimas ofertas?* ⬆`;
     navigator.clipboard.writeText(productDataString);
     setClick(!click);
   };
