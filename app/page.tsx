@@ -14,9 +14,7 @@ export default async function Home(searchParams: {
   return (
     <>
       <SearchBar />
-      <Suspense fallback={<ProductListSkeleton />}>
-        <ProductList searchParams={searchParams.searchParams.query} />
-      </Suspense>
+      <ProductList searchParams={searchParams.searchParams.query} />
     </>
   );
 }
