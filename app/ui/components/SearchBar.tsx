@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-console.log("hola en front");
+
 export default function SearchBar() {
   const pathname = usePathname();
   const searchParams = useSearchParams();

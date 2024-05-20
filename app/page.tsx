@@ -9,6 +9,7 @@ export default async function Home(searchParams: {
   params: {};
   searchParams: { query: string };
 }) {
+  console.log("hola en front");
   await connectDB();
   console.log(searchParams.searchParams.query);
   return (
