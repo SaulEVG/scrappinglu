@@ -14,7 +14,6 @@ export default async function Home(searchParams: {
   return (
     <>
       <SearchBar />
-      <ProductList searchParams={searchParams.searchParams.query} />
     </>
   );
 }
