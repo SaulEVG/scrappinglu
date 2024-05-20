@@ -14,18 +14,20 @@ export default async function ProductList(searchParams: {
   // const hosting = `${protocol}://${host}/`;
 
   await connectDB();
-  const productList = await getProductList("");
+  // const productList = await getProductList("");
 
-  const productListWithShortUrl = await Promise.all(
-    productList.map(async (product) => {
-      const { full, short, click } = await shortenUrl(product.productLink);
-      return { full, short, click, ...product };
-    })
-  );
+  // const productListWithShortUrl = await Promise.all(
+  //   productList.map(async (product) => {
+  //     const { full, short, click } = await shortenUrl(product.productLink);
+  //     return { full, short, click, ...product };
+  //   })
+  // );
 
   return (
     <>
-      <hr className="border-solid border-slate-800 border-2" />
+      {" "}
+      hola
+      {/* <hr className="border-solid border-slate-800 border-2" />
       <div className="flex flex-row flex-wrap gap-4 mt-4 justify-center">
         {productListWithShortUrl !== null
           ? productListWithShortUrl.map((product) => {
@@ -61,7 +63,7 @@ export default async function ProductList(searchParams: {
               );
             })
           : "Cargando"}
-      </div>
+      </div> */}
     </>
   );
 }
