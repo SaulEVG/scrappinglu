@@ -14,7 +14,7 @@ export default async function ProductList(searchParams: {
   // const hosting = `${protocol}://${host}/`;
 
   await connectDB();
-  // const productList = await getProductList("");
+  await getProductList("");
 
   // const productListWithShortUrl = await Promise.all(
   //   productList.map(async (product) => {
