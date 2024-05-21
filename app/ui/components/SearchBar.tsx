@@ -3,8 +3,8 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 console.log("hola en front");
 export default function SearchBar() {
-  //const pathname = usePathname();
-  //const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const { replace } = useRouter();
 
   const handlerSubmit = (e: React.FormEvent) => {
@@ -17,13 +17,13 @@ export default function SearchBar() {
   };
   const handlerSearch = () => {
     const term = document.querySelector("input")?.value;
-    // const params = new URLSearchParams(searchParams);
-    // if (term) {
-    //   params.set("query", term);
-    // } else {
-    //   params.delete("query");
-    // }
-    // replace(`${pathname}?${params.toString()}`);
+    const params = new URLSearchParams(searchParams);
+    if (term) {
+      params.set("query", term);
+    } else {
+      params.delete("query");
+    }
+    replace(`${pathname}?${params.toString()}`);
   };
 
   return (

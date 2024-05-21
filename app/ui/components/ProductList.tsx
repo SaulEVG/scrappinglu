@@ -8,26 +8,24 @@ import { headers } from "next/headers";
 export default async function ProductList(searchParams: {
   searchParams: string;
 }) {
-  // const headerList = headers();
-  // const host = headerList.get("x-forwarded-host");
-  // const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
-  // const hosting = `${protocol}://${host}/`;
+  const headerList = headers();
+  const host = headerList.get("x-forwarded-host");
+  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
+  const hosting = `${protocol}://${host}/`;
 
   await connectDB();
-  await getProductList("");
+  const productList = await getProductList(searchParams.searchParams);
 
-  // const productListWithShortUrl = await Promise.all(
-  //   productList.map(async (product) => {
-  //     const { full, short, click } = await shortenUrl(product.productLink);
-  //     return { full, short, click, ...product };
-  //   })
-  // );
+  const productListWithShortUrl = await Promise.all(
+    productList.map(async (product) => {
+      const { full, short, click } = await shortenUrl(product.productLink);
+      return { full, short, click, ...product };
+    })
+  );
 
   return (
     <>
-      {" "}
-      hola
-      {/* <hr className="border-solid border-slate-800 border-2" />
+      <hr className="border-solid border-slate-800 border-2" />
       <div className="flex flex-row flex-wrap gap-4 mt-4 justify-center">
         {productListWithShortUrl !== null
           ? productListWithShortUrl.map((product) => {
@@ -55,7 +53,7 @@ export default async function ProductList(searchParams: {
                     </h3>
                     <CopyButton
                       key={crypto.randomUUID()}
-                      // hosting={hosting}
+                      hosting={hosting}
                       productData={product}
                     />
                   </div>
@@ -63,7 +61,7 @@ export default async function ProductList(searchParams: {
               );
             })
           : "Cargando"}
-      </div> */}
+      </div>
     </>
   );
 }
